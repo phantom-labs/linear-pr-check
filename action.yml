@@ -1,0 +1,18 @@
+name: 'Linear PR Check'
+description: 'Github action for checking that a Linear issue has been linked into the PR'
+author: 'sergiocampama'
+inputs:
+  prefix:
+    description: 'Team prefix for issues to check (e.g. ENG-)'
+    required: true
+  github_token:
+    description: Github's token
+    required: false
+    default: ${{ github.token }}
+
+runs:
+  using: 'node12'
+  main: 'index.js'
+branding:
+  icon: 'alert-triangle'
+  color: 'gray-dark'

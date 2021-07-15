@@ -1,0 +1,20 @@
+{
+  "name": "issuecheck",
+  "version": "1.0.0",
+  "description": "Github action to enforce issues are associated with Pull Requests",
+  "main": "issuecheck.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "node tests.js"
+  },
+  "keywords": [
+    "github",
+    "actions"
+  ],
+  "author": "sergiocampama",
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.2.6",
+    "@actions/github": "^1.1.0"
+  }
+}
