@@ -24,15 +24,16 @@ async function run() {
     core.info(`Found prefixes: ${prefixes}`);
     let issue;
     for (const prefix of core.getInput("prefixes", {required: true}).split(',')) {
-      issue = issuecheck.findIssue(prefix, title, description, branch);
+      core.info(`Checking prefix: ${prefix}`);
+      issue = issuecheck.findIssue(`${prefix}-`, title, description, branch);
       if (issue) {
-        break;
+        core.info(`Issue ${issue} found`);
+        return;
       }
     }
     if (!issue) {
       throw("Issue not found");
     }
-    core.info(`Issue ${issue} found`)
   } catch {
     core.setFailed("Issue not found in PR: All PRs must have an associated issue");
     core.info(`
