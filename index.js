@@ -25,6 +25,9 @@ async function run() {
     let issue;
     for (const prefix of core.getInput("prefixes", {required: true}).split(',')) {
       issue = issuecheck.findIssue(prefix, title, description, branch);
+      if (issue) {
+        break;
+      }
     }
     if (!issue) {
       throw("Issue not found");
