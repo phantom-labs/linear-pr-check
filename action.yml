@@ -2,8 +2,8 @@ name: 'Linear PR Check'
 description: 'Github action for checking that a Linear issue has been linked into the PR'
 author: 'sergiocampama'
 inputs:
-  prefix:
-    description: 'Team prefix for issues to check (e.g. ENG-)'
+  prefixes:
+    description: 'Team prefixes for issues to check (e.g. ENG-, DES-)'
     required: true
   github_token:
     description: Github's token
