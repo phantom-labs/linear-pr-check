@@ -23,7 +23,7 @@ async function run() {
     const prefixes = core.getInput("prefixes", {required: true});
     core.info(`Found prefixes: ${prefixes}`);
     let issue;
-    for (const prefix of core.getInput("prefixes", {required: true})) {
+    for (const prefix of core.getInput("prefixes", {required: true}).split(',')) {
       issue = issuecheck.findIssue(prefix, title, description, branch);
     }
     if (!issue) {
