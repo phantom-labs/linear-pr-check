@@ -20,8 +20,15 @@ async function run() {
     const title = pullRequest.title;
     const description = pullRequest.body;
     const branch = pullRequest.head.ref;
-
-    const issue = issuecheck.findIssue(core.getInput("prefix"), title, description, branch);
+    const prefixes = core.getInput("prefixes", {required: true});
+    core.info(`Found prefixes: ${prefixes}`);
+    let issue;
+    for (const prefix of core.getInput("prefixes", {required: true})) {
+      issue = issuecheck.findIssue(prefix, title, description, branch);
+    }
+    if (!issue) {
+      throw("Issue not found");
+    }
     core.info(`Issue ${issue} found`)
   } catch {
     core.setFailed("Issue not found in PR: All PRs must have an associated issue");

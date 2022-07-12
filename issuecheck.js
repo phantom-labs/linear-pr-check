@@ -11,6 +11,6 @@ module.exports = {
       return branch.match(branchRegex)[1].toUpperCase();
     }
 
-    throw("Issue not found");
+    return;
   }
 }

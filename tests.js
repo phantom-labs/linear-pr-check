@@ -3,11 +3,8 @@ const issuecheck = require('./issuecheck.js');
 
 const tests = {
   testNoneContains: () => {
-    assert.throws(() => {
-        issuecheck.findIssue("ENG-", "title", "description", "branch");
-      },
-      RegExp("Issue not found")
-    );
+    const issue = issuecheck.findIssue("ENG-", "title", "description", "branch");
+    assert.equal(issue, undefined);
   },
   testTitle: () => {
     const issue = issuecheck.findIssue(
