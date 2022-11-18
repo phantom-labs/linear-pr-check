@@ -1,5 +1,6 @@
 const assert = require('assert/strict');
 const issuecheck = require('./issuecheck.js');
+const exceptioncheck = require('./exceptioncheck.ts');
 
 const tests = {
   testNoneContains: () => {
@@ -64,6 +65,20 @@ const tests = {
     );
     assert.equal(issue, "ENG-1234");
   },
+  testTitlePrefixException: () => {
+    const exception = exceptioncheck.find(
+      "nit",
+      "nit: ENG-1234 Something of value",
+    );
+    assert.equal(exception, "nit");
+  },
+  testTitlePrefixNoException: () => {
+    const exception = exceptioncheck.find(
+      "nit",
+      "feat: ENG-1234 Something of value",
+    );
+    assert.equal(exception, undefined);
+  },
 };
 
 function run() {
@@ -71,7 +86,7 @@ function run() {
     try {
       test()
       console.log(`${key} passed`)
-    } catch(error) {
+    } catch (error) {
       console.log(`${key} failed: ${error}`)
     }
   }
