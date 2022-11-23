@@ -1,9 +1,12 @@
-name: 'Linear PR Check'
-description: 'Github action for checking that a Linear issue has been linked into the PR'
-author: 'sergiocampama'
+name: "Linear PR Check"
+description: "Github action for checking that a Linear issue has been linked into the PR"
+author: "sergiocampama"
 inputs:
   prefixes:
-    description: 'Team prefixes for issues to check (e.g. ENG-, DES-)'
+    description: "Team prefixes for issues to check (e.g. ENG-, DES-)"
+    required: true
+  exceptionTitlePrefixes:
+    description: "Pull request title prefixes exempt from this check (e.g. nit)"
     required: true
   github_token:
     description: Github's token
@@ -11,8 +14,8 @@ inputs:
     default: ${{ github.token }}
 
 runs:
-  using: 'node12'
-  main: 'index.js'
+  using: "node12"
+  main: "index.js"
 branding:
-  icon: 'alert-triangle'
-  color: 'gray-dark'
+  icon: "alert-triangle"
+  color: "gray-dark"
