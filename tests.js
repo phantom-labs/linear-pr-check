@@ -79,6 +79,34 @@ const tests = {
     );
     assert.equal(exception, undefined);
   },
+  testTitlePrefixWithParenthesesNoException: () => {
+    const exception = exceptioncheck.find(
+      "nit",
+      "feat(somefeature): ENG-1234 Something of value",
+    );
+    assert.equal(exception, undefined);
+  },
+  testTitlePrefixWithParenthesesException: () => {
+    const exception = exceptioncheck.find(
+      "nit",
+      "nit(somefeature): ENG-1234 Something of value",
+    );
+    assert.equal(exception, "nit");
+  },
+  testTitlePrefixWithBracketsNoException: () => {
+    const exception = exceptioncheck.find(
+      "nit",
+      "feat[somefeature]: ENG-1234 Something of value",
+    );
+    assert.equal(exception, undefined);
+  },
+  testTitlePrefixWithBracketsException: () => {
+    const exception = exceptioncheck.find(
+      "nit",
+      "nit[somefeature]: ENG-1234 Something of value",
+    );
+    assert.equal(exception, "nit");
+  },
 };
 
 function run() {
